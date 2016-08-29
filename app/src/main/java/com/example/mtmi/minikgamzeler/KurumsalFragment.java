@@ -17,32 +17,14 @@ public class KurumsalFragment extends Fragment {
     RelativeLayout yonetim_kurulu_layout;
     RelativeLayout dernek_tuzugu_layout;
     RelativeLayout sorulan_sorular_layout;
-
+    View view;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.kurumsal_layout, container, false);
 
-
-//        View.OnClickListener onClickListener = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                switch (v.getId()) {
-//                    case R.id.biz_kimiz:
-//                        break;
-//                    case R.id.neden_cocuklar:
-//                        break;
-//                    case R.id.yonetim_kurulu:
-//                        break;
-//                    case R.id.dernek_tuzugu:
-//                        break;
-//                    case R.id.sikça_sorulan_sorular:
-//                        break;
-//                }
-//            }
-//        };
 
 
         //Biz kimiz kategorisini içeren view bulur
@@ -127,4 +109,6 @@ public class KurumsalFragment extends Fragment {
         });
         return view;
     }
+
+
 }

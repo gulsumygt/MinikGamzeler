@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Screen3"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:padding="16dp"
+        android:text=" Çocuklara yönelik çeşitli sosyal, kültürel ve eğitim etkinlikleri yapıyor, onların hayata umutla bakmalarını sağlıyor, dezavantajlı oldukları noktalarda maddi/manevi takviyeler ile destek olmaya çalışıyoruz."
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:id="@+id/textView2" />
+
+
+</RelativeLayout>

@@ -7,6 +7,158 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.mtmi.minikgamzeler.YonetimKuruluActivity">
+    tools:context="com.example.mtmi.minikgamzeler.YonetimKuruluActivity"
+
+    >
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="YÖNETİM KURULU"
+    android:textSize="24dp"
+    android:textStyle="bold"
+    android:id="@+id/yönetim0"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Başkan                          : "
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:id="@+id/yönetim1"
+        android:layout_below="@+id/yönetim0"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neslihan KUBUR"
+        android:textSize="18dp"
+        android:textStyle=""
+        android:id="@+id/yönetim2"
+        android:layout_below="@+id/yönetim0"
+        android:layout_toRightOf="@+id/yönetim0"
+        android:layout_toEndOf="@+id/yönetim0" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Başkan Yardımcısı      : "
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:id="@+id/yönetim3"
+        android:layout_below="@+id/yönetim1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kerem ALPER"
+        android:textSize="18dp"
+        android:textStyle=""
+        android:id="@+id/yönetim4"
+        android:layout_alignTop="@+id/yönetim3"
+        android:layout_alignLeft="@+id/yönetim2"
+        android:layout_alignStart="@+id/yönetim2" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Genel Sekreter             : "
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:id="@+id/yönetim5"
+        android:layout_below="@+id/yönetim3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rabia OĞAN"
+        android:textSize="18dp"
+        android:textStyle=""
+        android:id="@+id/yönetim6"
+        android:layout_below="@+id/yönetim4"
+        android:layout_alignLeft="@+id/yönetim4"
+        android:layout_alignStart="@+id/yönetim4" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Genel Sayman              : "
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:id="@+id/yönetim7"
+        android:layout_below="@+id/yönetim5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ebru HOPOĞLU"
+        android:textSize="18dp"
+        android:textStyle=""
+        android:id="@+id/yönetim8"
+        android:layout_below="@+id/yönetim6"
+        android:layout_alignLeft="@+id/yönetim6"
+        android:layout_alignStart="@+id/yönetim6" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yönetim Kurulu Üyesi :"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:id="@+id/yönetim9"
+        android:layout_below="@+id/yönetim7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Uğur AYDOĞDU"
+        android:textSize="18dp"
+        android:textStyle=""
+        android:id="@+id/yönetim10"
+        android:layout_below="@+id/yönetim8"
+        android:layout_alignLeft="@+id/yönetim8"
+        android:layout_alignStart="@+id/yönetim8" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yönetim Kurulu Üyesi :"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:id="@+id/yönetim11"
+        android:layout_below="@+id/yönetim9"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seyhan ÖZTÜRK"
+        android:textSize="18dp"
+        android:textStyle=""
+        android:id="@+id/yönetim12"
+        android:layout_alignTop="@+id/yönetim11"
+        android:layout_alignLeft="@+id/yönetim10"
+        android:layout_alignStart="@+id/yönetim10" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yönetim Kurulu Üyesi :"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:id="@+id/yönetim13"
+        android:layout_below="@+id/yönetim11"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ayşegül IŞIK"
+        android:textSize="18dp"
+        android:textStyle=""
+        android:id="@+id/yönetim14"
+        android:layout_alignTop="@+id/yönetim13"
+        android:layout_alignLeft="@+id/yönetim12"
+        android:layout_alignStart="@+id/yönetim12" />
+
 
 </RelativeLayout>

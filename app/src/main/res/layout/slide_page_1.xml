@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Screen1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="biz kimiz"
+            android:textAllCaps="true"
+            android:textSize="34sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="16dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sadece ihtiyaç sahibi çocukların mutluluğunu hedefleyen, onların sosyal, kültürel ve eğitimsel ihtiyaçlarını karşılayabilmek için bir araya gelen, hiçbir kuruma ya da kuruluşa bağlı olmayan, tüm yönetimi ve görevlileri gönüllülerden oluşan gençleriz."
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:padding="16dp"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+
+</RelativeLayout>
