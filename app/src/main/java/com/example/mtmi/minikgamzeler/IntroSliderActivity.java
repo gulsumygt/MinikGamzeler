@@ -38,7 +38,7 @@ public class IntroSliderActivity extends AppCompatActivity {
         introManager=new IntroManager(this);
 
         //Kullanıcının uygulamayı ilk defa açıp açmadığını kontrol et
-        if(introManager.Check()){
+        if(!introManager.Check()){
            launchHomeScreen();
             finish();
         }
