@@ -10,15 +10,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    Menu menu;
     SessionManagement session;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +58,18 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        updateMenuTitle(navigationView.getMenu());
+    }
 
+    private void updateMenuTitle(Menu menu){
+        try {
+            MenuItem menuItem = menu.findItem(R.id.nav_login);
+            if (session.isloggedIn()){
+                menuItem.setTitle("Logout");
+            }
+        }catch (NullPointerException e){
+            Log.v("hello",e.getMessage() +"");
+        }
     }
 
     @Override
@@ -75,7 +86,14 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+
     }
 
     @Override
@@ -93,6 +111,8 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -100,21 +120,25 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         FragmentManager fm = getSupportFragmentManager();
-
-
         if (id == R.id.nav_first) {
             fm.beginTransaction().replace(R.id.content_frame, new HomePageFragment()).commit();
             // Handle the camera action
         } else if (id == R.id.nav_second) {
             fm.beginTransaction().replace(R.id.content_frame, new KurumsalFragment()).commit();
-
         } else if (id == R.id.nav_third) {
             fm.beginTransaction().replace(R.id.content_frame, new ContactFragment()).commit();
+        } else if(id == R.id.nav_login){
+            if (session.isloggedIn()){
+                item.setTitle("Login");
+                session.logoutUser();
+            }else{
+                // TODO: 31.08.2016 login ekranına yönlendirecek.
+            }
 
         }
-       
 
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
