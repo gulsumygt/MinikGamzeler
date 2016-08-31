@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
                if(!session.isloggedIn()) {
 
                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                    startActivity(intent); finish();
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity
             if (session.isloggedIn()){
                 menuItem.setTitle("Logout");
             }
+
         }catch (NullPointerException e){
             Log.v("hello",e.getMessage() +"");
         }
@@ -132,6 +134,10 @@ public class MainActivity extends AppCompatActivity
                 item.setTitle("Login");
                 session.logoutUser();
             }else{
+
+                item.setTitle("Logout");
+                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+
                 // TODO: 31.08.2016 login ekranına yönlendirecek.
             }
 

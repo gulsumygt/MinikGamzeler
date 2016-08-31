@@ -67,6 +67,7 @@ public class SessionManagement {
         //after logout redirect user MainActivity
 
         Intent intent=new Intent(mContext,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
     public boolean isloggedIn(){
