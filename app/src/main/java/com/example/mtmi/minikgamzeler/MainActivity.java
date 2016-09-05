@@ -10,23 +10,32 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    SessionManagement session;
+//    SessionManagement session;
+
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        session = new SessionManagement(getApplicationContext());
+//        session = new SessionManagement(getApplicationContext());
+        auth=FirebaseAuth.getInstance();
 
+        if(auth.getCurrentUser()==null){
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            finish();
+        }
 
         setContentView(R.layout.activity_main);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -39,20 +48,20 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
 
 
-                if (!session.isloggedIn()) {
-
-
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-
-                } else {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    finish();
-                }
+//                if (!session.isloggedIn()) {
+//
+//
+//                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(intent);
+//                    finish();
+////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+////                        .setAction("Action", null).show();
+//
+//                } else {
+//                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                    finish();
+//                }
 
             }
         });
@@ -70,15 +79,15 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void updateMenuTitle(Menu menu) {
-        try {
-            MenuItem menuItem = menu.findItem(R.id.nav_login);
-            if (session.isloggedIn()) {
-                menuItem.setTitle("Logout");
-            }
-
-        } catch (NullPointerException e) {
-            Log.v("hello", e.getMessage() + "");
-        }
+//        try {
+//            MenuItem menuItem = menu.findItem(R.id.nav_login);
+//            if (session.isloggedIn()) {
+//                menuItem.setTitle("Logout");
+//            }
+//
+//        } catch (NullPointerException e) {
+//            Log.v("hello", e.getMessage() + "");
+//        }
     }
 
     @Override
@@ -123,7 +132,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(final MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -136,15 +145,18 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_third) {
             fm.beginTransaction().replace(R.id.content_frame, new ContactFragment()).commit();
         } else if (id == R.id.nav_login) {
-            if (session.isloggedIn()) {
-                item.setTitle("Login");
-                session.logoutUser();
-                finish();
-            } else {
 
-                item.setTitle("Logout");
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-            }
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+//            if (session.isloggedIn()) {
+//                item.setTitle("Login");
+//                session.logoutUser();
+//                finish();
+//            } else {
+//
+//                item.setTitle("Logout");
+//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//            }
 
         }
 

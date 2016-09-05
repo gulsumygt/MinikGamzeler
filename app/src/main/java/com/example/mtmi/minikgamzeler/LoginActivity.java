@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (password.length() < 6) {
                                 Toast.makeText(getApplicationContext(), "şifre 5 karakten az olamaz", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(LoginActivity.this, "Giriş başarısız oldu,0", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Giriş başarısız oldu", Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -89,36 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailInput = email.getText().toString();
-                final String passInput = password.getText().toString();
-
-                if (TextUtils.isEmpty(emailInput)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(passInput)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (passInput.length() < 5) {
-                    Toast.makeText(getApplicationContext(), "şifre 5 karakten az olamaz", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                auth.createUserWithEmailAndPassword(emailInput,passInput).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException(),
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finish();
-                        }
-                    }
-                });
-
+                startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
             }
         });
 
