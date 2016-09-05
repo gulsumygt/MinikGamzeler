@@ -23,7 +23,7 @@ public class KurumsalFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.kurumsal_layout, container, false);
+        view = inflater.inflate(R.layout.kurumsal_layout, container, false);
 
 
 
@@ -112,3 +112,4 @@ public class KurumsalFragment extends Fragment {
 
 
 }
+

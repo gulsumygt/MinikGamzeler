@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "749403695707",
+    "firebase_url": "https://minik-gamzeler.firebaseio.com",
+    "project_id": "minik-gamzeler",
+    "storage_bucket": "minik-gamzeler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749403695707:android:decbd90cc64fffe9",
+        "android_client_info": {
+          "package_name": "com.example.mtmi.minikgamzeler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749403695707-28fuhfg0g0q2cltov39erobtb43l9je2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mtmi.minikgamzeler",
+            "certificate_hash": "CD8B32AD72FE42F0E67AE1A4B8DFBD39203F5EBD"
+          }
+        },
+        {
+          "client_id": "749403695707-hobud56aom34nu3l74u7htl7d8dvi0b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd6rRqhdjaslP3sMEbBLNfV14NEADpTgA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749403695707-hobud56aom34nu3l74u7htl7d8dvi0b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
