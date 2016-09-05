@@ -42,22 +42,24 @@ public class SessionManagement {
         return  user;
     }
 
-//    public void checkLogin(){
-//        if(!this.isloggedIn()){
-//            Intent intent=new Intent(mContext,LoginActivity.class);
-//
-//            // Closing all the Activities
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//
-//            // Add new Flag to start new Activity
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            mContext.startActivity(intent);
-//        }
-//        else{
-//            Intent intent=new Intent(mContext,MainActivity.class);
-//            mContext.startActivity(intent);
-//        }
-//    }
+    public void checkLogin(){
+        if(!this.isloggedIn()){
+            Intent intent=new Intent(mContext,LoginActivity.class);
+
+            // Closing all the Activities
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            // Add new Flag to start new Activity
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
+        }
+        else{
+            Intent intent=new Intent(mContext,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
+        }
+    }
 
     public void logoutUser(){
         //clear all data from sharedpreferences
@@ -66,9 +68,10 @@ public class SessionManagement {
 
         //after logout redirect user MainActivity
 
-        Intent intent=new Intent(mContext,MainActivity.class);
+        Intent intent=new Intent(mContext,LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
+
     }
     public boolean isloggedIn(){
         return pref.getBoolean(IS_LOGIN,false);

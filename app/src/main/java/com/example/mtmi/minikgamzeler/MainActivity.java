@@ -17,17 +17,21 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    Menu menu;
     SessionManagement session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        session=new SessionManagement(getApplicationContext());
+        session = new SessionManagement(getApplicationContext());
+
 
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+//        session.checkLogin();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -35,19 +39,21 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
 
 
-               if(!session.isloggedIn()) {
+                if (!session.isloggedIn()) {
 
-                   Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                   startActivity(intent); finish();
+
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
-               }
-                else {
 
+                } else {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                }
 
-                   startActivity(new Intent(getApplicationContext(),MainActivity.class));
-               }
             }
         });
 
@@ -60,17 +66,18 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         updateMenuTitle(navigationView.getMenu());
+
     }
 
-    private void updateMenuTitle(Menu menu){
+    private void updateMenuTitle(Menu menu) {
         try {
             MenuItem menuItem = menu.findItem(R.id.nav_login);
-            if (session.isloggedIn()){
+            if (session.isloggedIn()) {
                 menuItem.setTitle("Logout");
             }
 
-        }catch (NullPointerException e){
-            Log.v("hello",e.getMessage() +"");
+        } catch (NullPointerException e) {
+            Log.v("hello", e.getMessage() + "");
         }
     }
 
@@ -114,7 +121,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -129,16 +135,15 @@ public class MainActivity extends AppCompatActivity
             fm.beginTransaction().replace(R.id.content_frame, new KurumsalFragment()).commit();
         } else if (id == R.id.nav_third) {
             fm.beginTransaction().replace(R.id.content_frame, new ContactFragment()).commit();
-        } else if(id == R.id.nav_login){
-            if (session.isloggedIn()){
+        } else if (id == R.id.nav_login) {
+            if (session.isloggedIn()) {
                 item.setTitle("Login");
                 session.logoutUser();
-            }else{
+                finish();
+            } else {
 
                 item.setTitle("Logout");
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-
-                // TODO: 31.08.2016 login ekranına yönlendirecek.
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
 
         }
