@@ -3,18 +3,28 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_first"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Anasayfa" />
-        <item
-            android:id="@+id/nav_second"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Kurumsal" />
-        <item
-            android:id="@+id/nav_third"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="İletişim" />
+            android:id="@+id/nav_profil"
+            android:icon="@drawable/account"
+            android:title="Profil" />
+
     </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_homepage"
+                android:icon="@drawable/home"
+                android:title="Anasayfa" />
+            <item
+                android:id="@+id/nav_kurumsal"
+                android:icon="@drawable/ic_location_city_black_24dp"
+                android:title="Kurumsal" />
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/phone_classic"
+                android:title="İletişim" />
+        </menu>
+    </item>
 
     <item android:title="Communicate">
         <menu>
@@ -24,8 +34,8 @@
                 android:title="Share" />
             <item
                 android:id="@+id/nav_login"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Logout" />
+                android:icon="@drawable/logout"
+                android:title="Çıkış Yap" />
         </menu>
     </item>
 

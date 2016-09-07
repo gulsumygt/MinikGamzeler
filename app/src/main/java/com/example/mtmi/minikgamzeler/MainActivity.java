@@ -14,6 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.mtmi.minikgamzeler.fragments.ContactFragment;
+import com.example.mtmi.minikgamzeler.fragments.HomePageFragment;
+import com.example.mtmi.minikgamzeler.fragments.KurumsalFragment;
+import com.example.mtmi.minikgamzeler.fragments.UserProfilFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
@@ -27,10 +31,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
 //        session = new SessionManagement(getApplicationContext());
-        auth=FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
-        if(auth.getCurrentUser()==null){
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        if (auth.getCurrentUser() == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         }
 
@@ -137,17 +141,21 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         FragmentManager fm = getSupportFragmentManager();
-        if (id == R.id.nav_first) {
+
+        if (id == R.id.nav_homepage) {
             fm.beginTransaction().replace(R.id.content_frame, new HomePageFragment()).commit();
             // Handle the camera action
-        } else if (id == R.id.nav_second) {
+        } else if (id == R.id.nav_kurumsal) {
             fm.beginTransaction().replace(R.id.content_frame, new KurumsalFragment()).commit();
-        } else if (id == R.id.nav_third) {
+        } else if (id == R.id.nav_contact) {
             fm.beginTransaction().replace(R.id.content_frame, new ContactFragment()).commit();
+        } else if (id == R.id.nav_profil) {
+            fm.beginTransaction().replace(R.id.content_frame, new UserProfilFragment()).commit();
         } else if (id == R.id.nav_login) {
 
             auth.signOut();
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
 //            if (session.isloggedIn()) {
 //                item.setTitle("Login");
 //                session.logoutUser();

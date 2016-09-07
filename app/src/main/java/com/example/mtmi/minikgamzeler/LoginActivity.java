@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,8 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
-    Button signIn, signUp;
-
+    Button signIn, signUp, resetpassword;
+    ProgressBar progressBar;
     SessionManagement session;
     FirebaseAuth auth;
 
@@ -28,7 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        auth=FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -43,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         signIn = (Button) findViewById(R.id.signin);
         signUp = (Button) findViewById(R.id.signup);
+        resetpassword = (Button) findViewById(R.id.btn_reset_password);
 
         signIn.setOnClickListener(new View.OnClickListener() {
 
@@ -55,16 +58,16 @@ public class LoginActivity extends AppCompatActivity {
                 final String passInput = password.getText().toString();
 
                 if (TextUtils.isEmpty(emailInput)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen Email adresi giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(passInput)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen Şifre giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                auth.signInWithEmailAndPassword(emailInput,passInput).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                auth.signInWithEmailAndPassword(emailInput, passInput).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
@@ -89,9 +92,27 @@ public class LoginActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
 
+        resetpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
+            }
+
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
+
     }
 }
+
