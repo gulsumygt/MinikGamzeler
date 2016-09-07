@@ -17,8 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText email,password;
-    private Button signup;
+    private EditText email,password,passwordcontrol,ad,soyad,Tc,telefon;
+    private Button signup,signinbutton,resetpasswordbutton;
     private FirebaseAuth auth;
 
     @Override
@@ -27,10 +27,17 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         auth=FirebaseAuth.getInstance();
-
+        resetpasswordbutton= (Button) findViewById(R.id.btn_reset_password);
+        signinbutton= (Button) findViewById(R.id.sign_in_button);
         email= (EditText) findViewById(R.id.email_signup);
         password= (EditText) findViewById(R.id.password_signup);
         signup= (Button) findViewById(R.id.signup2);
+        passwordcontrol= (EditText) findViewById(R.id.password_control);
+        ad= (EditText) findViewById(R.id.Ad);
+        soyad= (EditText) findViewById(R.id.soy_ad);
+        Tc= (EditText) findViewById(R.id.Tc);
+//        telefon= (EditText) findViewById(R.id.)
+
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,18 +45,37 @@ public class SignUpActivity extends AppCompatActivity {
 
                 String emailInput=email.getText().toString();
                 String passInput=password.getText().toString();
+                String passcontInput=passwordcontrol.getText().toString();
+                String TcInput=Tc.getText().toString();
+                String adInput=ad.getText().toString();
+
                 if (TextUtils.isEmpty(emailInput)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen Email Adresi giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(passInput)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen Şifre giriniz!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                if (TextUtils.isEmpty(emailInput)) {
+                    Toast.makeText(getApplicationContext(), "Lütfen Email Adresi giriniz!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(passInput)) {
+                    Toast.makeText(getApplicationContext(), "Lütfen Şifre giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (password.length() < 6) {
-                    Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Şifre çok kısa, Minimum 6 karakter!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!password.equals(passwordcontrol)){
+                    Toast.makeText(getApplicationContext(), "Şifreler uyuşmuyor!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -68,6 +94,20 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        signinbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
+            }
+        });
+
+        resetpasswordbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUpActivity.this,ResetPasswordActivity.class));
+            }
+
+        });
 
     }
 }

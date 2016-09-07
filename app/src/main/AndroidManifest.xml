@@ -36,9 +36,16 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="Giriş Yap" />
         <activity android:name=".AdminHomePageActivity" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="Kayıt Ol" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="Şifremi Unuttum" />
+
+
     </application>
 
 </manifest>
