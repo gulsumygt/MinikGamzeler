@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity
 
             auth.signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
 //            if (session.isloggedIn()) {
 //                item.setTitle("Login");
 //                session.logoutUser();
