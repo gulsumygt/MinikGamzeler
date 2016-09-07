@@ -1,4 +1,4 @@
-package com.example.mtmi.minikgamzeler;
+package com.example.mtmi.minikgamzeler.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import com.example.mtmi.minikgamzeler.BizKimizActivity;
+import com.example.mtmi.minikgamzeler.DernekTuzuguActivity;
+import com.example.mtmi.minikgamzeler.NedenCocuklarActivity;
+import com.example.mtmi.minikgamzeler.R;
+import com.example.mtmi.minikgamzeler.SorulanSorularActivity;
+import com.example.mtmi.minikgamzeler.YonetimKuruluActivity;
 
 /**
  * Created by glsmy on 27.08.2016.

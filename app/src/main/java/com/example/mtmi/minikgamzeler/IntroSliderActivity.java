@@ -38,14 +38,14 @@ public class IntroSliderActivity extends AppCompatActivity {
         introManager=new IntroManager(this);
 
         //Kullanıcının uygulamayı ilk defa açıp açmadığını kontrol et
-        if(introManager.Check()){
+        if(!introManager.Check()){
            launchHomeScreen();
             finish();
         }
 
-//        if(Build.VERSION.SDK_INT>=21){
-//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE|View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-//        }
+        if(Build.VERSION.SDK_INT>=21){
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE|View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
         setContentView(R.layout.activity_intro_slider);
 
 
@@ -70,7 +70,7 @@ public class IntroSliderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(IntroSliderActivity.this,MainActivity.class);
+                Intent intent=new Intent(IntroSliderActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -85,7 +85,7 @@ public class IntroSliderActivity extends AppCompatActivity {
                 }
                 else {
 
-                    Intent intent=new Intent(IntroSliderActivity.this,MainActivity.class);
+                    Intent intent=new Intent(IntroSliderActivity.this,LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }

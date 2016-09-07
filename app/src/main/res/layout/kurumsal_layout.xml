@@ -5,6 +5,25 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
+
+    <RelativeLayout
+        android:id="@+id/deneme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:visibility="gone"
+        android:background="#FAFAFA"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Biz Kimiz"
+            android:textSize="24dp" />
+
+    </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/biz_kimiz"
         android:layout_width="match_parent"

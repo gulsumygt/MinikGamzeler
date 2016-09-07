@@ -1,9 +1,9 @@
 package com.example.mtmi.minikgamzeler;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,24 +14,59 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.mtmi.minikgamzeler.fragments.ContactFragment;
+import com.example.mtmi.minikgamzeler.fragments.HomePageFragment;
+import com.example.mtmi.minikgamzeler.fragments.KurumsalFragment;
+import com.example.mtmi.minikgamzeler.fragments.UserProfilFragment;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+//    SessionManagement session;
+
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        session = new SessionManagement(getApplicationContext());
+        auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
 
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+//        session.checkLogin();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+
+//                if (!session.isloggedIn()) {
+//
+//
+//                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(intent);
+//                    finish();
+////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+////                        .setAction("Action", null).show();
+//
+//                } else {
+//                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                    finish();
+//                }
+
             }
         });
 
@@ -43,7 +78,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        updateMenuTitle(navigationView.getMenu());
 
+    }
+
+    private void updateMenuTitle(Menu menu) {
+//        try {
+//            MenuItem menuItem = menu.findItem(R.id.nav_login);
+//            if (session.isloggedIn()) {
+//                menuItem.setTitle("Logout");
+//            }
+//
+//        } catch (NullPointerException e) {
+//            Log.v("hello", e.getMessage() + "");
+//        }
     }
 
     @Override
@@ -60,7 +108,14 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+
     }
 
     @Override
@@ -78,25 +133,41 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(final MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        FragmentManager fm =getSupportFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
 
-
-        if (id == R.id.nav_first) {
-            fm.beginTransaction().replace(R.id.content_frame,new HomePageFragment()).commit();
+        if (id == R.id.nav_homepage) {
+            fm.beginTransaction().replace(R.id.content_frame, new HomePageFragment()).commit();
             // Handle the camera action
-        } else if (id == R.id.nav_second) {
-            fm.beginTransaction().replace(R.id.content_frame,new KurumsalFragment()).commit();
+        } else if (id == R.id.nav_kurumsal) {
+            fm.beginTransaction().replace(R.id.content_frame, new KurumsalFragment()).commit();
+        } else if (id == R.id.nav_contact) {
+            fm.beginTransaction().replace(R.id.content_frame, new ContactFragment()).commit();
+        } else if (id == R.id.nav_profil) {
+            fm.beginTransaction().replace(R.id.content_frame, new UserProfilFragment()).commit();
+        } else if (id == R.id.nav_login) {
 
-        } else if (id == R.id.nav_third) {
-            fm.beginTransaction().replace(R.id.content_frame,new ContactFragment()).commit();
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//            if (session.isloggedIn()) {
+//                item.setTitle("Login");
+//                session.logoutUser();
+//                finish();
+//            } else {
+//
+//                item.setTitle("Logout");
+//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//            }
 
         }
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
