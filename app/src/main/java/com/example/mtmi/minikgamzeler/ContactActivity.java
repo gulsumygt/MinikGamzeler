@@ -2,12 +2,13 @@ package com.example.mtmi.minikgamzeler;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class ContactActivity extends AppCompatActivity {
 
     EditText ad_soyad,iletişimemail,konu,mesajınız;
-
+    Button  gönder;
 
 
     @Override
@@ -19,7 +20,7 @@ public class ContactActivity extends AppCompatActivity {
         iletişimemail= (EditText) findViewById(R.id.iletisim_email);
         konu= (EditText) findViewById(R.id.konu);
         mesajınız= (EditText) findViewById(R.id.Mesajınız);
-
+        gönder= (Button) findViewById(R.id.Gönder);
 
 
 

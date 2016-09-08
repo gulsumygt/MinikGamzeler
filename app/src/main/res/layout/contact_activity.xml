@@ -83,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gönder"
+            android:id="@+id/Gönder"
             android:background="@color/colorAccent"
             android:textColor="@color/login"/>
     </LinearLayout>
