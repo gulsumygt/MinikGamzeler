@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText email, password;
     Button signIn, signUp, resetpassword;
     ProgressBar progressBar;
-    SessionManagement session;
     FirebaseAuth auth;
 
     @Override
@@ -39,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-        session = new SessionManagement(getApplicationContext());
 
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
