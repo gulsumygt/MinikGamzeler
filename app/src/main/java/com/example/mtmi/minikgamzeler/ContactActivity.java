@@ -1,15 +1,28 @@
-package com.example.mtmi.minikgamzeler.fragments;
+package com.example.mtmi.minikgamzeler;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.example.mtmi.minikgamzeler.R;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 
 public class ContactActivity extends AppCompatActivity {
+
+    EditText ad_soyad,iltişimemail;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_activity);
+
+
+
+
+
+
+
+
+
+
     }
 }

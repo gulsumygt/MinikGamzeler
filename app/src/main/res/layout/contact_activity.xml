@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/login"
-    tools:context=".fragments.ContactActivity">
+    tools:context=".ContactActivity">
 
 
     <LinearLayout
@@ -25,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Ad Soyad"
+                android:id="@+id/Ad_Soyad"
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -41,6 +41,7 @@
                 android:layout_height="match_parent"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
+                android:id="@+id/iletisim_email"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/colorAccent" />
@@ -54,34 +55,36 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/konu"
                 android:hint="Konu" />
         </android.support.design.widget.TextInputLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="150dp">
-        <android.support.design.widget.TextInputLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-
-            >
-
-
-            <EditText
+            <android.support.design.widget.TextInputLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:hint="Mesajınız..." />
+                android:layout_height="150dp">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:id="@+id/Mesajınız"
+                    android:hint="Mesajınız..." />
+
+            </android.support.design.widget.TextInputLayout>
         </ScrollView>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gönder"/>
+            android:text="Gönder"
+            android:background="@color/colorAccent"
+            android:textColor="@color/login"/>
     </LinearLayout>
 
-    </android.support.design.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -22,12 +22,21 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BizKimizActivity" />
-        <activity android:name=".DernekTuzuguActivity" />
-        <activity android:name=".NedenCocuklarActivity" />
-        <activity android:name=".SorulanSorularActivity" />
-        <activity android:name=".YonetimKuruluActivity" />
-        <activity android:name=".IntroSliderActivity">
+        <activity android:name=".BizKimizActivity"
+            android:label="Biz Kimiz"/>
+        <activity android:name=".DernekTuzuguActivity"
+            android:label="Dernek Tüzüğü"/>
+        <activity android:name=".NedenCocuklarActivity"
+            android:label="Neden Çocuklar"/>
+        <activity android:name=".SorulanSorularActivity"
+            android:label="Sıkça Sorulan Sorular"/>
+        <activity android:name=".YonetimKuruluActivity"
+            android:label="Yönetim Kurulu"/>
+        <activity android:name=".IntroSliderActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +53,8 @@
         <activity
             android:name=".ResetPasswordActivity"
             android:label="Şifremi Unuttum" />
-        <activity android:name=".fragments.ContactActivity"></activity>
+        <activity android:name=".ContactActivity"
+            android:label="İletişim"/>
     </application>
 
 </manifest>
