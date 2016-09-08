@@ -6,7 +6,7 @@ import android.widget.EditText;
 
 public class ContactActivity extends AppCompatActivity {
 
-    EditText ad_soyad,iltişimemail;
+    EditText ad_soyad,iletişimemail,konu,mesajınız;
 
 
 
@@ -15,7 +15,10 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_activity);
 
-
+        ad_soyad = (EditText) findViewById(R.id.Ad_Soyad);
+        iletişimemail= (EditText) findViewById(R.id.iletisim_email);
+        konu= (EditText) findViewById(R.id.konu);
+        mesajınız= (EditText) findViewById(R.id.Mesajınız);
 
 
 
