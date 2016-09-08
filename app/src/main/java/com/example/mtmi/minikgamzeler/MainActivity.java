@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.mtmi.minikgamzeler.fragments.ContactFragment;
+import com.example.mtmi.minikgamzeler.fragments.ContactActivity;
 import com.example.mtmi.minikgamzeler.fragments.HomePageFragment;
 import com.example.mtmi.minikgamzeler.fragments.KurumsalFragment;
 import com.example.mtmi.minikgamzeler.fragments.UserProfilFragment;
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_kurumsal) {
             fm.beginTransaction().replace(R.id.content_frame, new KurumsalFragment()).commit();
         } else if (id == R.id.nav_contact) {
-            fm.beginTransaction().replace(R.id.content_frame, new ContactFragment()).commit();
+            startActivity(new Intent(MainActivity.this, ContactActivity.class));
         } else if (id == R.id.nav_profil) {
             fm.beginTransaction().replace(R.id.content_frame, new UserProfilFragment()).commit();
         } else if (id == R.id.nav_login) {

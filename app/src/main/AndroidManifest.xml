@@ -44,8 +44,7 @@
         <activity
             android:name=".ResetPasswordActivity"
             android:label="Şifremi Unuttum" />
-
-
+        <activity android:name=".fragments.ContactActivity"></activity>
     </application>
 
 </manifest>

@@ -72,10 +72,13 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(telefoninput)) {
+                    Toast.makeText(getApplicationContext(), "Lütfen telefon numaranızı giriniz!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Tc.length() < 10) {
                     Toast.makeText(getApplicationContext(), "Lütfen Telefon numaranızı başında 0 olmadan giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 if (TextUtils.isEmpty(emailInput)) {
                     Toast.makeText(getApplicationContext(), "Lütfen Email Adresi giriniz!", Toast.LENGTH_SHORT).show();
                     return;
