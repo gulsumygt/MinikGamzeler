@@ -1,6 +1,7 @@
 package com.example.mtmi.minikgamzeler;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.mtmi.minikgamzeler.fragments.ContactFragment;
+import com.example.mtmi.minikgamzeler.fragments.ContactActivity;
 import com.example.mtmi.minikgamzeler.fragments.HomePageFragment;
 import com.example.mtmi.minikgamzeler.fragments.KurumsalFragment;
 import com.example.mtmi.minikgamzeler.fragments.UserProfilFragment;
@@ -22,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-//    SessionManagement session;
 
     private FirebaseAuth auth;
 
@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        session = new SessionManagement(getApplicationContext());
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() == null) {
@@ -44,28 +43,18 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        session.checkLogin();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Uri uri=Uri.parse("http://www.minikgamzeler.org.tr/bagis-yap/");
+                startActivity(new Intent(Intent.ACTION_VIEW,uri));
 
-//                if (!session.isloggedIn()) {
-//
-//
-//                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(intent);
-//                    finish();
-////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-////                        .setAction("Action", null).show();
-//
-//                } else {
-//                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//                    finish();
-//                }
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
 
             }
         });
@@ -148,23 +137,14 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_kurumsal) {
             fm.beginTransaction().replace(R.id.content_frame, new KurumsalFragment()).commit();
         } else if (id == R.id.nav_contact) {
-            fm.beginTransaction().replace(R.id.content_frame, new ContactFragment()).commit();
+            startActivity(new Intent(MainActivity.this, ContactActivity.class));
         } else if (id == R.id.nav_profil) {
             fm.beginTransaction().replace(R.id.content_frame, new UserProfilFragment()).commit();
         } else if (id == R.id.nav_login) {
 
             auth.signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//            if (session.isloggedIn()) {
-//                item.setTitle("Login");
-//                session.logoutUser();
-//                finish();
-//            } else {
-//
-//                item.setTitle("Logout");
-//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-//            }
-
+            finish();
         }
 
 

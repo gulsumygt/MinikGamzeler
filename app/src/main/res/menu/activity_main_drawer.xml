@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <group android:checkableBehavior="single">
         <item
@@ -9,34 +10,32 @@
 
     </group>
 
-    <item android:title="">
-        <menu>
-            <item
-                android:id="@+id/nav_homepage"
-                android:icon="@drawable/home"
-                android:title="Anasayfa" />
-            <item
-                android:id="@+id/nav_kurumsal"
-                android:icon="@drawable/ic_location_city_black_24dp"
-                android:title="Kurumsal" />
-            <item
-                android:id="@+id/nav_contact"
-                android:icon="@drawable/phone_classic"
-                android:title="İletişim" />
-        </menu>
-    </item>
+    <group android:id="@+id/action_divider">
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_login"
-                android:icon="@drawable/logout"
-                android:title="Çıkış Yap" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/nav_homepage"
+            android:icon="@drawable/home"
+            android:title="Anasayfa" />
+        <item
+            android:id="@+id/nav_kurumsal"
+            android:icon="@drawable/ic_location_city_black_24dp"
+            android:title="Kurumsal" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/phone_classic"
+            android:title="İletişim" />
+
+    </group>
+
+    <group android:visible="true">
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Share" />
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/logout"
+            android:title="Çıkış Yap" />
+    </group>
 
 </menu>
