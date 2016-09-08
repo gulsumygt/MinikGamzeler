@@ -10,16 +10,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mtmi.minikgamzeler.dataClasses.Person;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText email, password, passwordcontrol, ad, soyad, Tc, telefon;
     private Button signup, signinbutton, resetpasswordbutton;
     private FirebaseAuth auth;
+    Person person;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    String userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         auth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
         resetpasswordbutton = (Button) findViewById(R.id.btn_reset_password);
         signinbutton = (Button) findViewById(R.id.sign_in_button);
         email = (EditText) findViewById(R.id.email_signup);
@@ -50,6 +59,9 @@ public class SignUpActivity extends AppCompatActivity {
                 String adInput = ad.getText().toString();
                 String soyadınput = soyad.getText().toString();
                 String telefoninput = telefon.getText().toString();
+
+                person = new Person(adInput, TcInput, telefoninput, passInput, emailInput, soyadınput);
+
 
                 if (TextUtils.isEmpty(adInput)) {
                     Toast.makeText(getApplicationContext(), "Lütfen Adınızı giriniz!", Toast.LENGTH_SHORT).show();
@@ -102,6 +114,9 @@ public class SignUpActivity extends AppCompatActivity {
                             Toast.makeText(SignUpActivity.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
                         } else {
+                            userId = auth.getCurrentUser().getUid();
+                            databaseReference = firebaseDatabase.getReference("Kişiler").child(userId);
+                            databaseReference.setValue(person);
                             startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                             finish();
                         }
