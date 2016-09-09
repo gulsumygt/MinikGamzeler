@@ -110,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
         }
     }
+    
 
 }
 
