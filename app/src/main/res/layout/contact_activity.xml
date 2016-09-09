@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/login"
     tools:context=".ContactActivity">
 
@@ -23,7 +22,8 @@
         <android.support.design.widget.TextInputLayout
 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
 
             <EditText
                 android:layout_width="match_parent"
@@ -36,21 +36,6 @@
                 android:textColor="@color/colorAccent" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:id="@+id/iletisim_email"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
 
@@ -63,6 +48,7 @@
                 android:id="@+id/konu"
                 android:maxLines="2"
                 android:singleLine="true"
+                android:textColor="@color/colorAccent"
                 android:hint="Konu" />
         </android.support.design.widget.TextInputLayout>
 
@@ -80,6 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
+                    android:textColor="@color/colorAccent"
                     android:id="@+id/Mesajınız"
                     android:hint="Mesajınız..." />
 
@@ -90,17 +77,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gönder"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:id="@+id/Gönder"
             android:background="@color/colorAccent"
             android:textColor="@color/login"/>
     </LinearLayout>
 </ScrollView>
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
 </android.support.design.widget.CoordinatorLayout>
