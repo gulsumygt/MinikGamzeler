@@ -37,7 +37,7 @@
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="btn_forgot_password">Şifremi Unuttum!</string>
     <string name="btn_reset_password">Şifre Yenile</string>
-    <string name="btn_back">Back</string>
+    <string name="btn_back">Geri</string>
     <string name="hint_new_email">New Email</string>
     <string name="btn_change">Change</string>
     <string name="btn_send">Send</string>

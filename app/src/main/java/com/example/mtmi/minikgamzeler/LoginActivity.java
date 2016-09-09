@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         auth = FirebaseAuth.getInstance();
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
 
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -38,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         signIn = (Button) findViewById(R.id.signin);
@@ -50,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.v("button: ", "button clicked");
+
 
                 String emailInput = email.getText().toString();
                 final String passInput = password.getText().toString();
@@ -64,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-
+                progressBar.setVisibility(View.VISIBLE);
                 auth.signInWithEmailAndPassword(emailInput, passInput).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -80,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }
@@ -103,14 +103,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         if (progressBar != null) {
             progressBar.setVisibility(View.GONE);
         }
-
     }
+
 }
 

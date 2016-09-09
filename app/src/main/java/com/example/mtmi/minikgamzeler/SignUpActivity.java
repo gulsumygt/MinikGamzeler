@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.mtmi.minikgamzeler.dataClasses.Person;
@@ -27,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     String userId;
-
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                progressBar = (ProgressBar) findViewById(R.id.progressBar);
                 String emailInput = email.getText().toString();
                 String passInput = password.getText().toString();
                 String passcontInput = passwordcontrol.getText().toString();
@@ -109,13 +110,13 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Şifreler uyuşmuyor!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                progressBar.setVisibility(View.VISIBLE);
                 auth.createUserWithEmailAndPassword(emailInput, passInput).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
-                            Toast.makeText(SignUpActivity.this, "Authentication failed." + task.getException(),
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "Kimlik doğrulama yapılamadı!", Toast.LENGTH_SHORT).show();
+
                         } else {
                             userId = auth.getCurrentUser().getUid();
                             databaseReference = firebaseDatabase.getReference("Kişiler").child(userId);
@@ -123,6 +124,7 @@ public class SignUpActivity extends AppCompatActivity {
                             startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                             finish();
                         }
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }
@@ -142,6 +144,14 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
         });
-
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
+    }
+
 }

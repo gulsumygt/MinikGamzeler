@@ -16,9 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
-     EditText resetemail;
-     Button btnReset,btnBack;
-     FirebaseAuth auth;
+    EditText resetemail;
+    Button btnReset, btnBack;
+    FirebaseAuth auth;
     ProgressBar progressBar;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 String email = resetemail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "Lütfen üye olduğunuz email adresini giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -56,9 +56,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ResetPasswordActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, "Şifreniz email adresinize gönderilmiştir!", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(ResetPasswordActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, "Email gönderilemedi! Lütfen email adresinizi kontrol edip tekrar deneyiniz!", Toast.LENGTH_SHORT).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);
@@ -66,6 +66,13 @@ public class ResetPasswordActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
 }
